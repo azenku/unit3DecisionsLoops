@@ -18,8 +18,8 @@ public class GameOfLife
     private ActorWorld world;
     
     // the game board will have 5 rows and 5 columns
-    private final int ROWS = 20;
-    private final int COLS = 20;
+    private final int ROWS = 21;
+    private final int COLS = 21;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -53,14 +53,14 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the three cells initially alive
-        final int X1 = 0, Y1 = 2;
-        final int X2 = 1, Y2 = 1;
-        final int X3 = 1, Y3 = 3;
-        final int X4 = 2, Y4 = 2;
-        final int X5 = 3, Y5 = 2;
-        final int X6 = 4, Y6 = 1;
-        final int X7 = 4, Y7 = 2;
-        final int X8 = 4, Y8 = 3;
+        final int X1 = 7, Y1 = 10;
+        final int X2 = 8, Y2 = 9;
+        final int X3 = 8, Y3 = 11;
+        final int X4 = 9, Y4 = 10;
+        final int X5 = 10, Y5 = 10;
+        final int X6 = 11, Y6 = 9;
+        final int X7 = 11, Y7 = 10;
+        final int X8 = 11, Y8 = 11;
 
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
