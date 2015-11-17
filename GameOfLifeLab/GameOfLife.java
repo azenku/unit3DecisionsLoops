@@ -4,7 +4,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-
+import java.util.ArrayL00ist;
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
  * Also demonstrates how to provide accessor methods to make the class testable by unit tests.
@@ -116,11 +116,28 @@ public class GameOfLife
         
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
+        ArrayList<Location> alive = new ArrayList<Location>();
+        ArrayList<Location> dead = new ArrayList<Location>();
+        ArrayList<Actor> neighbors = new ArrayList<Actor>();
         
-        // insert magic here...
-        
+        for(int row = 0; r<ROWS; row++)
+        {
+            for(int col = 0; col<COLS; col++)
+            {
+                Location location = new Location(row, col);
+                Actor cell = grid.get(location);
+                neighbors = grid.GetNeighbors(loc);
+                if (cell == null && nieghbors.size() == 3)
+                {
+                    alive.add(loc);
+                }
+                else if (cell != null)
+                {
+                    if( neighbors.size() ==2 ||
+            }
+        }
+        }
     }
-    
     /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
      *
