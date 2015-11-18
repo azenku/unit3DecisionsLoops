@@ -17,7 +17,8 @@ The universe of the Game of Life is an infinite two-dimensional orthogonal
 	alive or dead. Every cell interacts with its eight neighbours, which are
 	the cells that are horizontally, vertically, or diagonally adjacent. At
 	each step in time, the following transitions occur:
-
+*blackrocks for living cells
+*21x21
 * Any live cell with fewer than two live neighbours dies, as if caused by
 	underpopulation.
 * Any live cell with two or three live neighbours lives on to the next generation.

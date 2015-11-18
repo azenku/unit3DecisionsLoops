@@ -4,7 +4,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-import java.util.ArrayL00ist;
+import java.util.ArrayList;
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
  * Also demonstrates how to provide accessor methods to make the class testable by unit tests.
@@ -107,8 +107,13 @@ public class GameOfLife
      * @pre     the game has been initialized
      * @post    the world has been populated with a new grid containing the next generation
      * 
+     * alive and dead are the 2 groups a cell with something in it can go in. 
+     * 
+     * Dead = cleared off screen
+     * 
+     * neighbors = counter for units near 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -120,24 +125,43 @@ public class GameOfLife
         ArrayList<Location> dead = new ArrayList<Location>();
         ArrayList<Actor> neighbors = new ArrayList<Actor>();
         
-        for(int row = 0; r<ROWS; row++)
+        for(int row = 0; row<ROWS; row++)
         {
             for(int col = 0; col<COLS; col++)
             {
                 Location location = new Location(row, col);
                 Actor cell = grid.get(location);
-                neighbors = grid.GetNeighbors(loc);
-                if (cell == null && nieghbors.size() == 3)
+                neighbors = grid.getNeighbors(location);
+                if (cell == null && neighbors.size() == 3)
                 {
-                    alive.add(loc);
+                    alive.add(location);
                 }
                 else if (cell != null)
                 {
-                    if( neighbors.size() ==2 ||
+                    if( neighbors.size() ==2 || neighbors.size() ==3)
+                    {
+                        alive.add(location);
+                    }
+                    else
+                    {
+                        dead.add(location);
+                    }
             }
         }
         }
-    }
+          
+        for (Location newlocation : dead)
+            {
+                grid.remove(newlocation);
+            }
+        for (Location newlocation : alive)
+        {
+                Rock rock = new Rock();
+                grid.put(newlocation,rock);
+            } 
+        world.show();
+}
+    
     /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
      *
@@ -178,9 +202,14 @@ public class GameOfLife
      * Creates an instance of this class. Provides convenient execution.
      *
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
         GameOfLife game = new GameOfLife();
+        for (int i = 0; i<50; i++)
+        {
+            Thread.sleep(1000);
+            game.createNextGeneration();
+        }
     }
 
 }
